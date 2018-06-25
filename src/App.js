@@ -5,18 +5,19 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      days: 1,
-      hours: 23,
-      minutes: 27,
-      seconds: 47,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
     };
+
     this.countDown = this.countDown.bind(this);
   }
   countDown() {
     // Set a starting date
     const startDate = new Date('Jun 27, 2018 18:3:00').getTime();
 
-    const count = setInterval(() => {
+    setInterval(() => {
       const now = new Date().getTime();
       
       // Gets the difference between the starting date and present date
@@ -38,24 +39,34 @@ class App extends Component {
     const { days, hours, minutes, seconds } = this.state;
     this.countDown();
     return (
-        days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0
-        ?
-          (<h1 style={styles.finishedMessage}>Countdown finished</h1>)
-        :
-          (<div style={styles.counter}>
-            <Counter number={this.state.days} label="Days"/>
-            <Counter number={this.state.hours} label="Hours"/>
-            <Counter number={this.state.minutes} label="Minutes"/>
-            <Counter number={this.state.seconds} label="Seconds"/>
-          </div>)
+      <div style={{...styles.flexbox, ...styles.container}}>
+        {
+          days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0
+          ?
+            (<h1 style={styles.finishedMessage}>Countdown finished</h1>)
+          :
+            (<div style={{...styles.flexbox, ...styles.counter}}>
+              <Counter number={this.state.days} label="Days"/>
+              <Counter number={this.state.hours} label="Hours"/>
+              <Counter number={this.state.minutes} label="Minutes"/>
+              <Counter number={this.state.seconds} label="Seconds"/>
+            </div>)
+        }
+      </div>
     );
   }
 }
 
 const styles = {
-  counter: {
+  flexbox: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'center',
+  },
+  container: {
+    height: '100vh',
+  },
+  counter: {
     flexFlow: 'wrap',
   },
   finishedMessage: {

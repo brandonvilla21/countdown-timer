@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Counter = ({number, label}) => {
     return (
@@ -8,6 +9,11 @@ const Counter = ({number, label}) => {
         </div>
     );
 }
+
+Counter.propTypes = {
+    number: PropTypes.number,
+    label: PropTypes.string,
+};
 
 const styles = {
     container: {

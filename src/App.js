@@ -15,7 +15,7 @@ class App extends Component {
   }
   countDown() {
     // Set a starting date
-    const startDate = new Date('Jun 27, 2018 18:3:00').getTime();
+    const startDate = new Date('Jul 27, 2018 18:3:00').getTime();
 
     setInterval(() => {
       const now = new Date().getTime();
